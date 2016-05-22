@@ -105,7 +105,7 @@ ca_file = <%= node['openstack']['image']['ssl']['ca_file'] %>
 # notification_driver = noop
 notification_driver=<%= @notification_driver %>
 
-<% if @notification_driver == "messaging" %>
+<% if @notification_driver == "messaging" or @notification_driver == "messagingv2"%>
 # Default publisher_id for outgoing notifications.
 # default_publisher_id = image.localhost
 
