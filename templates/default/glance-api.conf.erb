@@ -229,10 +229,9 @@ registry_client_insecure = <%= node['openstack']['image']['registry']['auth']['i
 # Driver or drivers to handle sending notifications. Set to
 # 'messaging' to send notifications to a message queue.
 # notification_driver = noop
-notifier_strategy=<%= node["openstack"]["mq"]["image"]["notifier_strategy"] %>
 notification_driver=<%= @notification_driver %>
 
-<% if @notification_driver == "messaging" %>
+<% if @notification_driver == "messaging" or @notification_driver == "messagingv2" %>
 # Default publisher_id for outgoing notifications.
 # default_publisher_id = image.localhost
 
