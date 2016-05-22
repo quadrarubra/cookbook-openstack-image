@@ -272,7 +272,7 @@ insecure = <%= node['openstack']['image']['registry']['auth']['insecure'] %>
 # From oslo.messaging
 #
 
-<% if @notification_driver == "messaging" && @mq_service_type == "qpid" %>
+<% if (@notification_driver == "messaging" or @notification_driver == "messagingv2") && @mq_service_type == "qpid" %>
 
 # Use durable queues in AMQP. (boolean value)
 # Deprecated group/name - [DEFAULT]/rabbit_durable_queues
@@ -314,7 +314,7 @@ qpid_topology_version=<%= node["openstack"]["mq"]["image"]["qpid"]["topology_ver
 # From oslo.messaging
 #
 
-<% if @notification_driver == "messaging" && @mq_service_type == "rabbitmq" %>
+<% if (@notification_driver == "messaging" or @notification_driver == "messagingv2") && @mq_service_type == "rabbitmq" %>
 
 # Number of seconds after which the Rabbit broker is considered down if heartbeat's keep-alive fails (0 disable the heartbeat)
 heartbeat_timeout_threshold=<%= node['openstack']['mq']['image']['rabbit']['heartbeat_timeout_threshold'] %>
